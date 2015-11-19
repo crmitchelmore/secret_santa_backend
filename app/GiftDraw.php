@@ -6,6 +6,11 @@ class GiftDraw extends Model
 {
      
      protected $fillable = [];]
+
+    public function giftGroup()
+    {
+        return $this->belongsTo('App\GiftGroup');
+    }
      
 }
 ?>

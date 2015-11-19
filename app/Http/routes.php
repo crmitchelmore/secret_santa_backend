@@ -14,3 +14,16 @@
 $app->get('/', function () use ($app) {
     return $app->welcome();
 });
+
+$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers', 'middleware' => 'EasyAuthMiddleware'], function($app)
+{
+    $app->get('verify','UserController@verifyUser');
+  
+    $app->post('user','UserController@createUser');
+      
+  	$app->get('group','GiftGroupController@index');    
+
+  	$app->post('group/draw','GiftGroupController@performDraw');    
+
+  	$app->post('group/resend','GiftGroupController@resendEmail');    
+});
