@@ -15,7 +15,7 @@ $app->get('/', function () use ($app) {
     return $app->welcome();
 });
 
-$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers', 'middleware' => 'EasyAuthMiddleware'], function($app)
+$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers', 'middleware' => 'App\Http\Middleware\EasyAuthMiddleware'], function($app)
 {
     $app->get('verify','UserController@verifyUser');
   
