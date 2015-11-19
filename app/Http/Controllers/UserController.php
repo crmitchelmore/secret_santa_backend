@@ -12,7 +12,14 @@ class UserController extends Controller{
   
 
     public function createUser(Request $request){
-  
+        
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'unique:user,email',
+            'device_token' => 'required|max:255'
+        ]);
+
+
         $user = User::create($request->all());
         
         if ($request->group_name) {
