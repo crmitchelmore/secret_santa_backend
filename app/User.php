@@ -7,14 +7,12 @@ class User extends Model
      
      protected $fillable = ['name', 'email'];
      
-    public function create(array $data)
+    public static function create(array $attributes = [])
     {
-        $user = $this->model->create($data);
-
-        $user->device_token = $data['device_token'];
+        $user = parent::create($attributes);
         $user->token = str_random(32);
-
-        $this->save();
+        $user->device_token = $attributes['device_token'];
+        $user->save();
 
         return $user;
     }
@@ -34,15 +32,9 @@ class User extends Model
         return $this->belongsTo('App\User', 'target_id');
     }
 
-    public function isVerified() 
+    public function isAdmin()
     {
-    	return $this->token === 'verified';
-    }
-
- 	public function verify() 
-    {
-    	$this->token = 'verified';
-    	$this->save();
+        return $this->giftGroup->admin()->getKey() == $this->getKey();
     }
        
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Log;
-use App\User;
-class EasyAuthMiddleware
+
+class EasyAuthAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,13 +13,13 @@ class EasyAuthMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+       public function handle($request, Closure $next)
     {
         $userID = intval($request->header('userID'));
         if ($userID > 0){
             $user = User::findOrFail($userID);
             $hash = md5('secret-'.$user->device_token.'<>'.$request->path().'<>'. $request->header('date') . '-santa');
-            if ($hash !== $request->header('authToken')) {
+            if ($hash !== $request->header('authToken') || !$user->isAdmin()) {
                 return response([], 403);
             }
             $request->attributes->add(['user' => $user]);
@@ -31,3 +30,4 @@ class EasyAuthMiddleware
         return $next($request);
     }
 }
+

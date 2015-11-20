@@ -6,7 +6,7 @@ use App\User;
 class GiftGroup extends Model
 {
      
-    protected $fillable = ['budget', 'event_name', 'event_date'];
+    protected $fillable = ['budget', 'event_name', 'event_date', 'name'];
   
     public function admin()
     {
@@ -22,11 +22,6 @@ class GiftGroup extends Model
     {
         return $this->hasMany('App\User');
     }   
-
-    public function isUserAdmin($user) 
-    {
-    	return $this->admin()->getKey() == $user->getKey();
-    }
 
     public function performDraw()
     {

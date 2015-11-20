@@ -4,9 +4,43 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5d253dcd97352dcb008dfe6f5072940e",
-    "content-hash": "a0de689f799da9237598c5298f06df6d",
+    "hash": "d45c4c42b3fc3482485537eb9e650d18",
+    "content-hash": "34fed637c588bb9e49462a504b49f27d",
     "packages": [
+        {
+            "name": "d11wtq/boris",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/borisrepl/boris.git",
+                "reference": "125dd4e5752639af7678a22ea597115646d89c6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/borisrepl/boris/zipball/125dd4e5752639af7678a22ea597115646d89c6e",
+                "reference": "125dd4e5752639af7678a22ea597115646d89c6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "ext-readline": "*"
+            },
+            "bin": [
+                "bin/boris"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Boris": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-01-17 12:21:18"
+        },
         {
             "name": "danielstjules/stringy",
             "version": "1.10.0",
@@ -62,6 +96,49 @@
                 "utils"
             ],
             "time": "2015-07-23 00:54:12"
+        },
+        {
+            "name": "davejamesmiller/laravel-boris",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davejamesmiller/laravel-boris.git",
+                "reference": "34bddef8bd82b4d86a3af44323c1a1eebd3f098f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-boris/zipball/34bddef8bd82b4d86a3af44323c1a1eebd3f098f",
+                "reference": "34bddef8bd82b4d86a3af44323c1a1eebd3f098f",
+                "shasum": ""
+            },
+            "require": {
+                "d11wtq/boris": "~1.0",
+                "illuminate/support": ">=4.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "DaveJamesMiller\\Boris": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "authors": [
+                {
+                    "name": "Dave James Miller",
+                    "email": "dave@davejamesmiller.com",
+                    "homepage": "http://davejamesmiller.com/"
+                }
+            ],
+            "description": "Adds an 'artisan boris' command to run the Boris REPL in the Laravel environment.",
+            "homepage": "https://github.com/davejamesmiller/laravel-boris",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2014-02-23 00:46:31"
         },
         {
             "name": "doctrine/inflector",
@@ -3392,7 +3469,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "davejamesmiller/laravel-boris": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -3,19 +3,14 @@
 namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
-
+use Log;
 class Controller extends BaseController
 {
-    public function __construct()
+
+	protected function loadUser($request)
 	{
-		$userID = $request->header('userdID');
-		if (is_int($userID)){
-	    	$this->user = App\User::findOrFail($userID);
-	    	\View::share('user', $this->user);
-	    	$this->giftGroup = $this->user->giftGroup();
-	    } else {
-	    	$this->user = false;
-	    	$this->giftGroup = false;
-	    }
+		$user = $request->attributes->get('user');
+		$this->user = $user;
+	    $this->giftGroup = $user ? $user->giftGroup() : false;
 	}
 }
